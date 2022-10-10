@@ -1,0 +1,93 @@
+package com.demo;
+import java.time.LocalDate;
+
+
+import com.entity.Hospitallog;
+import com.entity.patient;
+import com.utility.hibernateUtility;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+public class Create {
+
+	public static void main(String[] args) {
+		 SessionFactory sessionFactory = hibernateUtility.getSessionFactory();
+		  Session session = sessionFactory.openSession();
+		  session.beginTransaction();
+		  
+        LocalDate Check_in=LocalDate.now() ;
+        LocalDate Check_out=LocalDate.now() ;
+        
+        Hospitallog hr = new Hospitallog();
+        hr.setName("Tanavi");
+        hr.setAddress("Banglore");
+        hr.setMobile_no((long) 99864356);
+        hr.setadmin_no(admin_no);
+        hr.setdischarge(discharge);
+        hr.setward_no(109);
+        
+        hr.setName("Ankit");
+        hr.setAddress("Hyderabad");
+        hr.setMobile_no((long) 67584689);
+        hr.setadmin_no(admin_no);
+        hr.setdischarge(discharge);
+        hr.setward_no(107);
+        
+        hr.setName("Srinu");
+        hr.setAddress("Chennai");
+        hr.setMobile_no((long) 906579087);
+        hr.setadmin_no(admin_no);
+        hr.setdischarge(discharge);
+        hr.setward_no(108);
+        
+        hr.setName("Varshini");
+        hr.setAddress("Mumbai");
+        hr.setMobile_no((long) 98765432);
+        hr.setadmin_no(admin_no);
+        hr.setdischarge(discharge);
+        hr.setward_no(110);
+        
+        
+        
+        
+        patient patient=new patient();
+        patient.setward_no(109);
+        patient.setName("monika");
+        patient.setMobile_no((long) 98765432);
+        patient.setAddress("Mumbai");
+        
+       patient patient=new patient();
+        patient.setward_no(108);
+        patient.setName("udhaya");
+        patient.setMobile_no((long) 906579087);
+        patient.setAddress("Chennai");
+        
+        patient patient=new patient();
+        patient.setward_no(107);
+        patient.setName("rishi");
+        patient.setMobile_no((long) 67584689);
+        patient.setAddress("Hyderabad");
+        
+		patient patient=new patient();
+        patient.setward_no(106);
+        patient.setName("devika");
+        patient.setMobile_no((long) 99864356);
+        patient.setAddress("Banglore");
+        
+        
+        
+        hr.setward(patient);
+        session.save(hr);
+
+        session.save(patient);
+        
+        
+        
+		  System.out.println("Inserted Successfully");
+		  session.getTransaction().commit();
+		  session.close();
+		  sessionFactory.close();
+
+        }
+
+	}
